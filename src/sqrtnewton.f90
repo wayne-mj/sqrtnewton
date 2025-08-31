@@ -35,7 +35,8 @@ contains
   !> Square root for 32bit numbers
   function sqr_root_32(num) result(res)
     real(real32), intent(in)    :: num 
-    type(sqrtype)               :: res 
+    type(sqrtype)               :: res
+    ! real(real32)              :: res !> Uncomment this if you wants this to be the actual return 
     real(real32)                :: r1,r2, tol, num2
     integer                     :: iter
 
@@ -44,23 +45,30 @@ contains
     iter = 0
     r1 = 1.
     r2 = 0
+    !> Uncomment for actual return
+    ! res = 0.
 
     !> If the number is negative, correct and continue
     if (num .lt. 0. ) then
       num2 = num * (-1.)
+      !> Comment below out if wanting to return a REAL rather than the structure
       res%msg = "Negative number corrected"
+    !> otherwise continue
     else 
       num2 = num
+      !> Comment below out if wanting to return a REAL rather than the structure
       res%msg = "OK"
     end if
 
     do
      r2 = (num2 / r1 + r1 ) /2
+     !> Check if the difference is within tolerance or has reached MAX_ITER
      if ((abs(r2 - r1) .lt. tol) .or.(iter .ge. MAX_ITER)) exit
      r1 = r2
      iter = iter + 1  
     end do
 
+    ! res = r1 !> Uncomment this line and comment out below to return a REAL
     res%sqr32 = r1
     res%iterations = iter
   end function
@@ -69,6 +77,7 @@ contains
   function sqr_root_64(num) result(res)
     real(real64), intent(in)    :: num 
     type(sqrtype)               :: res
+    ! real(real64)              :: res !> Uncomment this if you wants this to be the actual return
     real(real64)                :: r1,r2, tol, num2
     integer                     :: iter 
 
@@ -77,23 +86,30 @@ contains
     iter = 0
     r1 = 1.
     r2 = 0
+    !> Uncomment for actual return
+    ! res = 0.
 
     !> If the number is negative, correct and continue
     if (num .lt. 0. ) then
       num2 = num * (-1.)
+      !> Comment below out if wanting to return a REAL rather than the structure
       res%msg = "Negative number corrected"
+    !> otherwise continue
     else 
       num2 = num
+      !> Comment below out if wanting to return a REAL rather than the structure
       res%msg = "OK"
     end if
 
     do
      r2 = (num2 / r1 + r1 ) /2
+     !> Check if the difference is within tolerance or has reached MAX_ITER
      if ((abs(r2 - r1) .lt. tol) .or.(iter .ge. MAX_ITER)) exit
      r1 = r2
      iter = iter + 1
     end do
 
+    ! res = r1 !> Uncomment this line and comment out below to return a REAL
     res%sqr64 = r1
     res%iterations = iter
   end function
@@ -102,6 +118,7 @@ contains
   function sqr_root_128(num) result(res)
     real(real128), intent(in)   :: num  
     type(sqrtype)               :: res
+    ! real(real128)              :: res !> Uncomment this if you wants this to be the actual return
     real(real128)               :: r1,r2, tol, num2
     integer                     :: iter 
 
@@ -110,23 +127,30 @@ contains
     iter = 0
     r1 = 1.
     r2 = 0
+    !> Uncomment for actual return
+    ! res = 0.
 
     !> If the number is negative, correct and continue
     if (num .lt. 0. ) then
       num2 = num * (-1.)
+      !> Comment below out if wanting to return a REAL rather than the structure
       res%msg = "Negative number corrected"
+    !> otherwise continue
     else 
       num2 = num
+      !> Comment below out if wanting to return a REAL rather than the structure
       res%msg = "OK"
     end if
 
     do
      r2 = (num2 / r1 + r1 ) /2
+     !> Check if the difference is within tolerance or has reached MAX_ITER
      if ((abs(r2 - r1) .lt. tol) .or.(iter .ge. MAX_ITER)) exit
      r1 = r2
      iter = iter + 1  
     end do
 
+    ! res = r1 !> Uncomment this line and comment out below to return a REAL
     res%sqr128 = r1
     res%iterations = iter
   end function
