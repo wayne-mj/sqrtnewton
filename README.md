@@ -18,3 +18,5 @@ integer         ::  iterations
 character(32)   :: msg
 ```
 That provides feedback about the result, how many iterations it took, and if it was necessary to modify the number to perform the operation, for example if the number was negative an operation of multiplying by -1 would be required as the result is an imaginary number and the algorithm without a defined set of iterations can become an infinite loop of positive and negative numbers.
+
+I have included comments in the code on how to revert the functions to a state that return only the result of the operation without the extraneous data should that be wanted.
